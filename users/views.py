@@ -45,7 +45,7 @@ def forgot_password(request):
             user = User.objects.filter(email=email).first()
 
             if not user:
-                messages.error(request, "User not found.")
+                messages.error(request, f"User with email: {email} not found.")
                 return redirect("forgot-password")
 
             """
@@ -73,13 +73,11 @@ def forgot_password(request):
                 ],
                 template="forgot_password",
             )
-            messages.success(request, "Password reset instructions sent.")
+            messages.success(request, "Password reset instructions sent. Check your email")
         except Exception as e:
             print(str(e))
             messages.error(request, "Error sending password reset email.")
             return redirect("forgot-password")
-
-        messages.success(request, "Password reset instructions sent.")
     return render(request, "accounts/forgot_password.html")
 
 
