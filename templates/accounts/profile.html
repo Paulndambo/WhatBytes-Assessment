@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Username:</b> {{username}}</li>
+              <li class="list-group-item"><b>Email:</b> {{email}}</li>
+              <li class="list-group-item"><b>Date Joined:</b> {{date_joined}}</li>
+              <li class="list-group-item"><b>Last Login:</b> {{last_login}}</li>
+              <li class="list-group-item"><b>Last Updated:</b> {{last_updated}}</li>
+            </ul>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+                <a href="{% url 'dashboard' %}" class="btn btn-primary">Dashboard</a>
+            </div>
+            <div class="col text-end">
+                <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+            </div>
+          </div>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock content %}

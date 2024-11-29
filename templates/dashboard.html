@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row text-center">
+    <div class="card">
+        <div class="card-body">
+          {% if request.user.is_authenticated %}
+          <h5 class="card-title">Hi, {{request.user.username}}!</h5>
+          <p class="card-text">You are viewing this page because you have logged in.</p>
+          <a href="{% url 'profile' %}" class="btn btn-info">View Profile</a>
+          <a href="{% url 'reset-password' request.user.token %}" class="btn btn-primary">Change Password</a>
+          <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+          {% else %}
+          <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+          <a href="{% url 'forgot-password' %}" class="btn btn-info">Forgot Password</a>
+          {% endif %}
+        </div>
+      </div>
+</div>
+{% endblock content %}
